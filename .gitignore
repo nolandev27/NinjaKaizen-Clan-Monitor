@@ -1,0 +1,10 @@
+# Ocultar las claves de red
+.env
+
+# Ocultar la base de datos local para que no pese el repositorio
+clan_data.db
+
+# Basura interna de ejecución de Python
+__pycache__/
+*.pyc
+
