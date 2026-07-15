@@ -198,6 +198,7 @@ def monitorear_clan():
         
         time.sleep(6)
 
-# Arrancamos la función principal
-inicializador_base_datos()
-monitorear_clan()
+# Arrancamos la función principal de forma segura e independiente
+if __name__ == "__main__":
+    inicializador_base_datos()
+    monitorear_clan()
