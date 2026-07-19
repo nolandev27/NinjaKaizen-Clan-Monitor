@@ -1,6 +1,6 @@
 # Clan Monitor - Ninja Kaizen
 
-This is a Python-based bot developed to track and audit the real-time activity, attacks, and statistics of all my clan members in **Ninja Kaizen**. The system automates data scraping from the game's website, stores the history locally, and reports everything in an organized manner to our Discord server.
+This is a Python bot developed to track and audit the real-time activity, attacks, and statistics of all my clan members in **Ninja Kaizen**. The system automates data scraping from the game's website, stores the history locally, and reports everything in an organized manner to our Discord server.
 
 ---
 
