@@ -1,39 +1,39 @@
-# Monitor de Clan - Ninja Kaizen
+# Clan Monitor - Ninja Kaizen
 
-Este es un bot en Python desarrollado para rastrear y auditar en tiempo real la actividad, ataques y estadísticas de todos los miembros de mi clan en **Ninja Kaizen**. El sistema automatiza el raspado de datos de la web del juego, guarda el historial de forma local y reporta todo de manera organizada a nuestro servidor de Discord.
-
----
-
-# ¿Por qué creé este proyecto?
-
-Gestionar un clan competitivo de forma manual es un dolor de cabeza. Necesitaba automatizar el control de las batallas y el estado diario de cada miembro sin tener que revisar la web del juego a cada rato. 
-
-Este monitor hace el trabajo pesado por mí cada 6 segundos, asegurando que ningún dato se pierda y que todo el equipo esté alineado a través de alertas automatizadas.
+This is a Python-based bot developed to track and audit the real-time activity, attacks, and statistics of all my clan members in **Ninja Kaizen**. The system automates data scraping from the game's website, stores the history locally, and reports everything in an organized manner to our Discord server.
 
 ---
 
-# Lo que hace este sistema
+# Why did I create this project?
 
-- **Scraping automatizado:** Conecta con la web oficial de Ninja Kaizen y extrae los datos limpios de los jugadores en cada ciclo.
-- **Base de datos local (SQLite):** Guarda el estado de los miembros para llevar un registro histórico confiable. Uso **DB Browser por SQLite** para verificar la estructura y las consultas de la base de datos.
-- **Alertas en Discord:** Envía reportes formateados directamente a los canales del clan usando Webhooks.
-- **Seguridad en las credenciales:** Las URLs secretas de Discord y los datos sensibles no están expuestos en el código; se manejan de forma oculta en un archivo `.env` local por ciberseguridad.
+Managing a competitive clan manually is a headache. I needed to automate the tracking of battles and the daily status of each member without having to check the game's website all the time. 
 
----
-
-# Desafíos Técnicos y Solución (Estabilidad de Red)
-
-Durante las primeras pruebas, el script abría y cerraba conexiones de red individuales en cada vuelta. Esto saturaba los sockets de Windows y provocaba caídas constantes por bloqueos del servidor remoto (como el Error 10054).
-
-**La Solución:** Refactoricé la conexión para implementar un **Túnel de Red Permanente (`requests.Session()`)**. Al mantener la tubería de comunicación abierta (Keep-Alive), el bot ya no fuerza la red en cada ciclo. Esto eliminó por completo los errores de desconexión, bajó el uso de CPU en mi computadora local y estabilizó los reportes masivos hacia Discord.
+This monitor does the heavy lifting for me every 6 seconds, ensuring no data is lost and keeping the entire team aligned through automated alerts.
 
 ---
 
-# Archivos del Proyecto
+# What this system does
 
-- `monitor_clan.py`: Código principal con la lógica del bot, las peticiones de red y el guardado en la base de datos.
-- `clan_data.sqbpro`: Configuración de DB Browser para el manejo de las tablas SQLite.
-- `.gitignore`: Filtro esencial para que Git no suba a GitHub mi base de datos real (`.db`) ni mis contraseñas privadas (`.env`).
+- **Automated Scraping:** Connects to the official Ninja Kaizen website and extracts clean player data during each cycle.
+- **Local Database (SQLite):** Stores the status of the members to maintain a reliable historical record. I use **DB Browser for SQLite** to verify the database structure and queries.
+- **Discord Alerts:** Sends formatted reports directly to the clan channels using Webhooks.
+- **Credential Security:** Secret Discord URLs and sensitive data are not exposed in the code; they are handled securely and hidden in a local `.env` file for cybersecurity.
 
 ---
-Desarrollado por **nolandev** 
+
+# Technical Challenges and Solution (Network Stability)
+
+During initial testing, the script opened and closed individual network connections on every loop. This saturated Windows network sockets and caused constant crashes due to remote server blocks (such as Error 10054).
+
+**The Solution:** I refactored the connection to implement a **Persistent Network Tunnel (`requests.Session()`)**. By keeping the communication pipeline open (Keep-Alive), the bot no longer forces the network on every cycle. This completely eliminated disconnection errors, lowered CPU usage on my local computer, and stabilized mass reporting to Discord.
+
+---
+
+# Project Files
+
+- `monitor_clan.py`: Main code containing the bot logic, network requests, and database storage.
+- `clan_data.sqbpro`: DB Browser configuration file for managing SQLite tables.
+- `.gitignore`: Essential filter to prevent Git from uploading my actual database (`.db`) or my private passwords (`.env`) to GitHub.
+
+---
+Developed by **nolandev**
